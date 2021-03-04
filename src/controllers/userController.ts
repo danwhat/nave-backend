@@ -1,16 +1,21 @@
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 import { createUser, checkUser } from '../models/usersModels';
 
 const login = async (req: Request, res: Response) : Promise<Response> => {
   const { email, password } = req.body;
   const response = await checkUser(email, password);
-  return res.send(response);
+  if (response) {
+    const token = jwt.sign({ data: email }, process.env.SECRET, { expiresIn: '30m', algorithm: 'HS256' });
+    return res.status(200).send({ token });
+  }
+  return res.status(401).send({ message: 'email ou usuário errado' });
 };
 
 const signup = async (req: Request, res: Response) : Promise<Response> => {
   const { email, password } = req.body;
   await createUser(email, password);
-  return res.send({ message: `Usuário com email ${email} criado com sucesso.` });
+  return res.status(201).send({ message: `Usuário com email ${email} criado com sucesso.` });
 };
 
 export default { login, signup };
