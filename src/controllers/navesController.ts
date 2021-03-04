@@ -42,6 +42,12 @@ const editNave = async (req: Request, res: Response) : Promise<Response> => {
   });
 };
 
+const deleteNave = async (req: Request, res: Response) : Promise<Response> => {
+  const { id } = req.params;
+  await navesModels.deleteNave(id);
+  return res.status(200).send({ message: 'deletado com sucesso' });
+};
+
 export default {
-  createNave, getAllByUser, getById, editNave,
+  createNave, getAllByUser, getById, editNave, deleteNave,
 };

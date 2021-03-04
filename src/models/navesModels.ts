@@ -40,6 +40,12 @@ const editNave = async (
   );
 };
 
+const deleteNave = async (id: number) : Promise<void> => {
+  await connection.execute(
+    'DELETE FROM navedb.naves WHERE id=?;', [id],
+  );
+};
+
 export default {
-  createNave, getAll, getById, editNave,
+  createNave, getAll, getById, editNave, deleteNave,
 };
