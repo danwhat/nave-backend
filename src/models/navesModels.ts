@@ -7,6 +7,13 @@ const getAll = async (userId: number) : Promise<unknown> => {
   return user;
 };
 
+const getById = async (id: number) : Promise<unknown> => {
+  const nave = await connection.execute(
+    'SELECT * FROM navedb.naves WHERE id=?;', [id],
+  );
+  return nave[0];
+};
+
 const createNave = async (
   name: string,
   birthdate: string,
@@ -20,4 +27,19 @@ const createNave = async (
   );
 };
 
-export default { createNave, getAll };
+const editNave = async (
+  name: string,
+  birthdate: string,
+  admissionDate: string,
+  jobRole: string,
+  id: number,
+) : Promise<void> => {
+  await connection.execute(
+    'UPDATE navedb.naves SET name = ?, birthdate = ?, admission_date = ?, job_role = ? WHERE id = ?;',
+    [name, birthdate, admissionDate, jobRole, id],
+  );
+};
+
+export default {
+  createNave, getAll, getById, editNave,
+};

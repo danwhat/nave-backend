@@ -2,11 +2,17 @@ import { Request, Response } from 'express';
 import navesModels from '../models/navesModels';
 import decoderToken from '../utils/decoderToken';
 
-const getAll = async (req: Request, res: Response) : Promise<Response> => {
+const getAllByUser = async (req: Request, res: Response) : Promise<Response> => {
   const token = req.headers.authorization;
   const decoded = decoderToken(token);
   const response = await navesModels.getAll(decoded.id);
   return res.status(200).send(response);
+};
+
+const getById = async (req: Request, res: Response) : Promise<Response> => {
+  const { id } = req.params;
+  const response = await navesModels.getById(id);
+  return res.status(200).send(response[0]);
 };
 
 const createNave = async (req: Request, res: Response) : Promise<Response> => {
@@ -23,4 +29,19 @@ const createNave = async (req: Request, res: Response) : Promise<Response> => {
   });
 };
 
-export default { createNave, getAll };
+const editNave = async (req: Request, res: Response) : Promise<Response> => {
+  const {
+    id: Id, name, birthdate, admission_date: admissionDate, job_role: jobRole,
+  } = req.body;
+  await navesModels.editNave(name, birthdate, admissionDate, jobRole, Id);
+  return res.status(201).send({
+    name,
+    birthdate,
+    admission_date: admissionDate,
+    job_role: jobRole,
+  });
+};
+
+export default {
+  createNave, getAllByUser, getById, editNave,
+};

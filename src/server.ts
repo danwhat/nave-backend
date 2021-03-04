@@ -12,7 +12,9 @@ server.get('/', checkToken, (req, res) => {
 });
 // user
 server.post('/nave', naveController.createNave);
-server.get('/nave', naveController.getAll);
+server.get('/nave/:id', naveController.getById);
+server.get('/nave', naveController.getAllByUser);
+server.put('/nave', naveController.editNave);
 
 // login page
 server.post('/signup', userController.signup);
