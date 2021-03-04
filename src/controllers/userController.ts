@@ -6,7 +6,7 @@ const login = async (req: Request, res: Response) : Promise<Response> => {
   const { email, password } = req.body;
   const response = await checkUser(email, password);
   if (response) {
-    const token = jwt.sign({ data: email }, process.env.SECRET, { expiresIn: '30m', algorithm: 'HS256' });
+    const token = jwt.sign({ email, id: 1 }, process.env.SECRET, { expiresIn: '30m', algorithm: 'HS256' });
     return res.status(200).send({ token });
   }
   return res.status(401).send({ message: 'email ou usuário errado' });
