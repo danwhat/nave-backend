@@ -7,6 +7,14 @@ const getUser = async () : Promise<unknown> => {
   return user;
 };
 
+const checkDuplicatedEmail = async (login: string) : Promise<boolean> => {
+  const [user] = await connection.execute(
+    'SELECT * FROM navedb.users WHERE email=?', [login],
+  );
+  if (user[0]) return true;
+  return false;
+};
+
 const checkUser = async (login: string, password: string) : Promise<boolean> => {
   const [user] = await connection.execute(
     'SELECT * FROM navedb.users WHERE email=? AND password=?;', [login, password],
@@ -21,4 +29,6 @@ const createUser = async (login: string, password: string) : Promise<void> => {
   );
 };
 
-export { createUser, getUser, checkUser };
+export default {
+  createUser, getUser, checkUser, checkDuplicatedEmail,
+};
