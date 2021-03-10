@@ -13,17 +13,17 @@ server.post('/signup', userController.signup);
 server.post('/login', userController.login);
 
 // naves
-server.post('/navers/store', naveController.createNave);
-server.get('/navers/:id', naveController.getById);
-server.post('/navers', naveController.getAllByFilter);
-server.put('/navers/update', naveController.editNave);
-server.delete('/navers/delete/:id', naveController.deleteNave);
+server.post('/navers/store', checkToken, naveController.createNave);
+server.get('/navers/:id', checkToken, naveController.getById);
+server.post('/navers', checkToken, naveController.getAllByFilter);
+server.put('/navers/update', checkToken, naveController.editNave);
+server.delete('/navers/delete/:id', checkToken, naveController.deleteNave);
 
 // // projects
-server.post('/projects', projectsController.createProject);
-server.get('/projects/:id', projectsController.getById);
-server.get('/projects', projectsController.getAllByUser);
-server.put('/projects', projectsController.editProject);
-server.delete('/projects/:id', projectsController.deleteProject);
+server.post('/projects', checkToken, projectsController.createProject);
+server.get('/projects/:id', checkToken, projectsController.getById);
+server.get('/projects', checkToken, projectsController.getAllByUser);
+server.put('/projects', checkToken, projectsController.editProject);
+server.delete('/projects/:id', checkToken, projectsController.deleteProject);
 
 server.listen(process.env.PORT);
