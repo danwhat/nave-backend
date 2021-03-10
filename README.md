@@ -1,3 +1,6 @@
+## O Projeto
+
+Desafio back-end da Nave.  Foi criado um sistema com gerenciamento de Navers e Projetos e o relacionamento entre eles, além de um sistema simples de login e autenticação com JWT. O sistema foi construido utilizando um banco de dados MySQL.
 
 ## Dificuldades
 
@@ -8,7 +11,7 @@ Por não ter muita experiência, a cada nova etapa alcançada eu via um jeito no
 - **Typescript** - Por achar que seria simples, julguei interessante criar o sistema em Typescript para aprender algo novo. Apos os desafios começarem a aparecer, eu tive que deixar o Typescript de lado (utilizando muitas vezes artificios como **any** ou **unkown**), e com isso não aproveitei as vantagens de usa-lo nem pratiquei tanto quanto gostaria.
 
 ## Aprendizados
-Além da prática em si, eu percebi que preciso preciso estudar mais sobre Arquitetura de Software pois em nenhum momento tive dificuldade com código, tudo que eu queria fazer eu fazia. O problema é que eu não sabia como deveria criar o sistema.
+Além da prática em si, eu percebi que preciso estudar mais sobre Arquitetura de Software, pois em nenhum momento tive dificuldade com código, conseguia criar tudo que eu queria. O problema é que eu não sabia como deveria construir o sistema.
 
 ## Testando o Sistema
 Após fazer o download do projeto, você precisará instalar suas dependências com `npm instal` ou `yarn`. Feito isso, está na hora de configurar o banco de dados **MySQL**.  O Sistema utiliza cinco variáveis de ambiente para funcionar:
