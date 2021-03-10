@@ -26,4 +26,4 @@ server.get('/projects', projectsController.getAllByUser);
 server.put('/projects', projectsController.editProject);
 server.delete('/projects/:id', projectsController.deleteProject);
 
-server.listen(3000);
+server.listen(process.env.PORT);
