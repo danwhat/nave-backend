@@ -1,4 +1,4 @@
-## O Projeto
+# O Projeto
 
 Desafio back-end da Nave.  Foi criado um sistema com gerenciamento de Navers e Projetos e o relacionamento entre eles, além de um sistema simples de login e autenticação com JWT. O sistema foi construido utilizando um banco de dados MySQL.
 
@@ -24,6 +24,14 @@ Após fazer o download do projeto, você precisará instalar suas dependências 
 O último passo é criar o banco de dados. Crie o banco de dados **navedb** e utilize o arquivo **navedb.sql** encontrado na raiz do projeto. Ele contém uma sequência de comandos **sql** que criará as tabelas, relações e povoará-lo.
 
 **Tudo pronto!** Agora rode o comando `yarn run dev` e o sistema estará no ar!
+
+## Documentação Dinâmica - Insomnia
+Caso você prefira consumir a documentação pela interface do Insomnia, entre na pasta **insomnia** pelo console e digite o comando `npx serve`. 
+Após o comando ser executado, acesse a **url** que aparecerá no console e você terá acesso à documentação.
+
+![doc insomnia](https://i.imgur.com/N0pg5fw.png)
+
+# Rotas
 ## Rotas de Autenticação
 
 **POST - /signup**
